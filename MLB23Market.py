@@ -7,49 +7,64 @@ import requests
 from tabulate import tabulate
 import streamlit as st
 
-profitWant = int(input("Enter minimum profit from flip: "))
-series = int(input("Please enter the series you'd like to check:\n (1) Live Series\n (2) Rookie\n (3) Breakout\n (4) Veteran\n (5) All-Star\n (6) Awards\n (7) Postseason\n (8) Future Stars\n (9) Signature\n (10) Topps Now\n (11) Finest\n (12) 2nd Half Heroes\n (13) Milestone\n (14) Captain\n (15) Charisma\n (16) World Baseball Classic\n"))
+# profitWant = int(input("Enter minimum profit from flip: "))
+# series = int(input("Please enter the series you'd like to check:\n (1) Live Series\n (2) Rookie\n (3) Breakout\n (4) Veteran\n (5) All-Star\n (6) Awards\n (7) Postseason\n (8) Future Stars\n (9) Signature\n (10) Topps Now\n (11) Finest\n (12) 2nd Half Heroes\n (13) Milestone\n (14) Captain\n (15) Charisma\n (16) World Baseball Classic\n"))
 
-seriesOptions = ['Live Series', 'Breakout', 'Veteran','All-Star','Awards','Postseason','Future Stars','Signature','Topps Now','Finest','2nd Half Heroes','Milestone','Capatin','Charisma','World Baseball Classic']
+seriesOptions = ['Live Series', 'Rookie', 'Breakout', 'Veteran','All-Star','Awards','Postseason','Future Stars','Signature','Topps Now','Finest','2nd Half Heroes','Milestone','Captain','Charisma','World Baseball Classic','Sanford Greene','Home Run Derby','All-Star Game','Mexico City']
 
+# Streamlit sidebar elements
 with st.sidebar:
-    st.selectbox(seriesOptions)
+
+    st.title("Options:")
+
+    profitWant = st.number_input("Minimum Profit: ", 100, 1000000, 250, step=50)
+
+    seriesOption = st.selectbox("Series:", seriesOptions)
 
 
-if series == 1:
+if seriesOption == 'Live Series':
     series = 1337
-elif series == 2:
+elif seriesOption == 'Rookie':
     series = 10001
-elif series == 3:
+elif seriesOption == 'Breakout':
     series = 10002
-elif series == 4:
+elif seriesOption == 'Veteran':
     series = 10003
-elif series == 5:
+elif seriesOption == 'All-Star':
     series = 10004
-elif series == 6:
+elif seriesOption == 'Awards':
     series = 10005
-elif series == 7:
+elif seriesOption == 'Postseason':
     series = 10006
-elif series == 8:
+elif seriesOption == 'Future Stars':
     series = 10008
-elif series == 9:
+elif seriesOption == 'Signature':
     series = 10009
-elif series == 10:
+elif seriesOption == 'Topps Now':
     series = 10017
-elif series == 11:
+elif seriesOption == 'Finest':
     series = 10018
-elif series == 12:
+elif seriesOption == '2nd Half Heroes':
     series = 10020
-elif series == 13:
+elif seriesOption == 'Milestone':
     series = 10022
-elif series == 14:
+elif seriesOption == 'Captain':
     series = 10026
-elif series == 15:
+elif seriesOption == 'Charisma':
     series = 10027
-elif series == 16:
+elif seriesOption == 'World Baseball Classic':
     series = 10028
+elif seriesOption == 'Sanford Greene':
+    series = 10025
+elif seriesOption == 'Home Run Derby':
+    series = 10030
+elif seriesOption == 'All-Star Game':
+    series = 10029
+elif seriesOption == 'Mexico City':
+    series = 10033
 else:
-    print("INVALID...CHECKING FOR LIVE SERIES.")
+    with st.sidebar:
+        st.write("INVALID...CHECKING FOR LIVE SERIES.")
     series = 1337
     
 
@@ -78,4 +93,16 @@ for i in range(len(listingNames)):
     if profit > profitWant:
         table[listingNames[i]] = profit
 
-print(tabulate(table.items(), headers=("Name:", "Profit:")))
+table = sorted(table.items(),key=lambda x:x[1], reverse=True)
+
+col1, col2 = st.columns(2)
+
+with col1:
+   st.header("Name:")
+   for item in table:
+       st.write(item[0])
+
+with col2:
+   st.header("Profit:")
+   for item in table:
+       st.write(item[1])
