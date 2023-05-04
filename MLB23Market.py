@@ -6,7 +6,7 @@ Create a program that showcases best cards to flip on MLB 23 using their API
 import requests
 # from tabulate import tabulate
 import streamlit as st
-from streamlit_autorefresh import st_autorefresh
+#from streamlit_autorefresh import st_autorefresh
 
 # profitWant = int(input("Enter minimum profit from flip: "))
 # series = int(input("Please enter the series you'd like to check:\n (1) Live Series\n (2) Rookie\n (3) Breakout\n (4) Veteran\n (5) All-Star\n (6) Awards\n (7) Postseason\n (8) Future Stars\n (9) Signature\n (10) Topps Now\n (11) Finest\n (12) 2nd Half Heroes\n (13) Milestone\n (14) Captain\n (15) Charisma\n (16) World Baseball Classic\n"))
