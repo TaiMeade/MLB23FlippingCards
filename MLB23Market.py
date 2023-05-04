@@ -113,7 +113,9 @@ with st.spinner("Calculating..."):
 
 # ----------------------------------- Code for displaying to main portion of the streamlit screen -----------------------------------
 st.markdown("<h1 style='text-align: center;'>MLB 23 Flipping Tool</h1>", unsafe_allow_html=True)
-st.markdown("Welcome to my card flipping tool!  This tool uses the MLB 23 API to determine realtime profits that can be made by players.")
+st.markdown("Welcome to my card flipping tool!  This tool uses the MLB 23 API to determine realtime profits that can be made by players.  Donations are entirely optional, but greatly appreciated as I am a college student!")
+st.markdown("* Cashapp - $TaiMeade")
+st.markdown("* Venmo - @Stephan-Meade")
 
 with st.expander("Notes:"):
     st.markdown("")
